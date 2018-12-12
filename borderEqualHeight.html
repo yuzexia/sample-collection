@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>borderEqualHeight</title>
+	<style>
+		html,body,div,nav,section,h3{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			border-left: 300px solid #000;
+		}
+		.box:after{
+			clear:both;
+			display:block;
+			content: '';
+		}
+		.left{
+			float:left;
+			width: 300px;
+			margin-left: -300px;
+			color: #fff;
+		}
+		.left h3{
+			height:40px;
+			line-height: 40px;
+			text-align: center;
+			border-bottom: 1px solid #eee;
+			box-sizing:border-box;
+		}
+		.module{
+			height: 40px;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		<nav class="left">
+			<h3>导航 1</h3>
+		</nav>
+		<section>
+			<div class="module">模块 1</div>
+		</section>
+	</div>
+	<div class="btns">
+		<button id="addNav">增加导航</button>
+		<button id="addModule">增加模块</button>
+	</div>
+
+
+<script>
+	var addnav = document.getElementById('addNav'),
+		addmodule = document.getElementById('addModule'),
+		navbox = document.getElementsByClassName('left')[0],
+		modulebox = document.getElementsByTagName('section')[0];
+
+
+
+	addNav.addEventListener('click', function(e) {
+		var len = document.getElementsByTagName('h3').length + 1,
+			node = document.createElement('h3'),
+			textnode = document.createTextNode('导航 ' + len );
+			
+			console.log(len)
+		node.appendChild(textnode);
+		navbox.appendChild(node);
+	}, false)
+	addmodule.addEventListener('click', function(e) {
+		var len = document.getElementsByClassName('module').length + 1,
+			node = document.createElement('div'),
+			textnode = document.createTextNode('模块 ' + len);
+		node.setAttribute('class', 'module');
+		node.appendChild(textnode);
+		modulebox.appendChild(node);
+	}, false)
+
+</script>
+</body>
+</html>

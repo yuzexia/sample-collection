@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #app{}
+        .video-con{width:100%;height:auto;}
+        .video-con video{width:100%;height: auto;}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        hello {{text}}
+        <button @click="getMovies">获取</button>
+        <div class="video-con" v-for="item in movies" :key="item.video_id">
+            <video :src="item.video_url" controls="controls" :poster="item.video_img"></video>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data: {
+                text: 'abcdefg',
+                movies: []
+            },
+            methods: {
+                getMovies: function() {
+                    Vue.http.get('http://api.magicmovie.video/xclub/movies')
+                        .then(response => {
+                            console.log(response)
+                            this.movies = response.data.data.slice(0, 10)
+                            console.log(this.movies)
+                        }, error => {
+                            console.log(error)
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
