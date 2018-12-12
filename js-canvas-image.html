@@ -52,8 +52,10 @@
                 canvas.height = imageUpload.height;
                 // canvas绘制图片
                 context.drawImage(imageUpload, 0, 0);
+                // 绘制水印
+                // context.drawImage(eleImgCover, 0, 0);
                 // 回调
-                callback(canvas.toDataURL('image/jpeg'));
+                callback(canvas.toDataURL('image/jpeg', 0.1));
             }
             imageUpload.src = url;
         }
