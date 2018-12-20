@@ -1,8 +1,8 @@
 /*
 * @Author: qy
 * @Date:   2018-12-07 13:04:33
-* @Last Modified by:   qy
-* @Last Modified time: 2018-12-12 00:00:43
+* @Last Modified by:   yuze.xia
+* @Last Modified time: 2018-12-17 08:11:41
 */
 let originUrl = document.getElementsByTagName('ytd-grid-video-renderer')[0].getElementsByTagName('ytd-thumbnail')[0].getElementsByClassName('yt-simple-endpoint')[0].origin;
 var targetUrl = document.getElementsByTagName('ytd-grid-video-renderer')[0].getElementsByTagName('ytd-thumbnail')[0].getElementsByClassName('yt-simple-endpoint')[0].getAttribute('href');
@@ -127,11 +127,6 @@ https://www.youtube.com/watch?v=2TorxykEFj8
 https://www.youtube.com/watch?v=jTiBaOUtUAw
 https://www.youtube.com/watch?v=Omyc5AEoTX4
 https://www.youtube.com/watch?v=0Glmzx-8YQE
-
-
-
-
-
 https://www.youtube.com/watch?v=8SIPE-bNKAs
 https://www.youtube.com/watch?v=-Sh9z5rPMvw
 https://www.youtube.com/watch?v=g3o-XPkwdZQ
@@ -157,11 +152,6 @@ https://www.youtube.com/watch?v=c5ixLE3P2Qs
 https://www.youtube.com/watch?v=lPgKq4HcSGc
 https://www.youtube.com/watch?v=4VvB4u1lweI
 https://www.youtube.com/watch?v=GXOsoLvSUkI
-
-
-
-
-
 https://www.youtube.com/watch?v=pJ_mHAbWqIg
 https://www.youtube.com/watch?v=OvSJ2-zmjS4
 https://www.youtube.com/watch?v=0ugQdtbRwVc
@@ -177,6 +167,16 @@ https://www.youtube.com/watch?v=gGmC5NWrXOU
 https://www.youtube.com/watch?v=DSzm6Oor3Gw
 https://www.youtube.com/watch?v=3d79JMSmLWs
 https://www.youtube.com/watch?v=917Ba9nnsnA
+
+
+
+
+
+
+
+
+
+
 https://www.youtube.com/watch?v=8HrsOChPF4w
 https://www.youtube.com/watch?v=m8vwI8Q7NLc
 https://www.youtube.com/watch?v=PhYn8xU24CY
