@@ -5,6 +5,10 @@
   "repository": "https://github.com/yuzexia/sample-collection.git",
   "author": "yuze.xia <327932801@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "dev" : "node_modules/.bin/webpack-dev-server",
+    "dist" : "node_modules/.bin/webpack"
+  },
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",

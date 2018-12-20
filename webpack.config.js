@@ -7,6 +7,7 @@ module.exports = {
     entry: './src/app.jsx', //入口文件
     output: {
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/dist/',
         filename: 'js/app.js'
     },
     module: {
@@ -80,6 +81,6 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: './dist'
+        port: 8086
     }
 };

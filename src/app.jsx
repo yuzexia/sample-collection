@@ -2,7 +2,7 @@
  * @Author: yuze.xia 
  * @Date: 2018-12-20 16:53:00 
  * @Last Modified by: yuze.xia
- * @Last Modified time: 2018-12-21 01:20:16
+ * @Last Modified time: 2018-12-21 01:49:34
  */
 
 import React from 'react';
@@ -18,6 +18,7 @@ import './index.scss';
 
 ReactDOM.render(
     <div>
+        hello react
         <h1>hello webpack</h1>,
         <i className="fa fa-address-book"></i>
     </div>,
