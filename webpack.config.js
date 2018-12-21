@@ -87,8 +87,16 @@ module.exports = {
     ],
     devServer: {
         port: 8086,
+        // 当使用 `HTML5 History API` 时，任意的 404 响应都可能需要被替代为 `index.html`
         historyApiFallback: {
             index: '/dist/index.html'
+        },
+        // 代理
+        proxy: {
+            '/manage': {
+                target: 'http://admin.yuze.com',
+                changeOrigin: true
+            }
         }
     }
 };
