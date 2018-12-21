@@ -10,6 +10,11 @@ module.exports = {
         publicPath: '/dist/',
         filename: 'js/app.js'
     },
+    resolve: {
+        alias: {
+            page: path.resolve(__dirname, 'src/page')
+        }
+    },
     module: {
         rules: [
             // js，jsx文件的处理
@@ -81,6 +86,9 @@ module.exports = {
         })
     ],
     devServer: {
-        port: 8086
+        port: 8086,
+        historyApiFallback: {
+            index: '/dist/index.html'
+        }
     }
 };
