@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>box-center</title>
+    <style>
+        .box{position: relative; width: 100px; height: 100px; display: inline-block; margin: 20px; border: 1px solid #000;}
+        .box > div {background: gray;}
+        .box .one{position: absolute; width: 50px; height: 50px; top: 50%; left: 50%; margin-top: -25px; margin-left: -25px;}
+        .box .two{position: absolute; width: 50px; height: 50px; top:0; right: 0; bottom: 0; left: 0; margin: auto; background: orange;}
+        .box-three{display: table-cell; vertical-align: middle; text-align: center; }
+        .box .three{display:inline-block; width: 50px; height: 50px; background: purple;}
+        .box-four{display: -webkit-box; -webkit-box-pack: center; -webkit-box-align: center;}
+        .box .four{width: 50px; height: 50px; background: red;}
+        .box .five{position: absolute; width: 50px; height: 50px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: yellow;}
+
+        .box-six{text-align:center;}
+        .box-six:before{content: ''; height: 100%; width: 0; display: inline-block; vertical-align: middle;}
+        .box .six{display: inline-block; vertical-align: middle; width: 50px; height: 50px; background: blue;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="one"></div>
+    </div>
+    <div class="box">
+        <div class="two"></div>
+    </div>
+    <div class="box box-three">
+        <div class="three"></div>
+    </div>
+    <div class="box box-four">
+        <div class="four"></div>
+    </div>
+    <div class="box">
+        <div class="five"></div>
+    </div>
+    <div class="box box-six">
+        <div class="six"></div>
+    </div>
+</body>
+</html>
