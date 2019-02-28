@@ -20,7 +20,7 @@
         el: '#app',
         template: "<div><h1>{{message + '这是再template中的'}}</h1><button @click='handleClick'>template更新数据</button></div>",
         render: function(createElement) {
-            return createElement('h1', 'this is render createElemnt');
+            return createElement('h1', `${this.message}this is render createElemnt`);
         },
         data: {
             message: 'Vue的生命周期'
