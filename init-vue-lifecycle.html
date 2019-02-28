@@ -11,13 +11,17 @@
 
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
-        <button @click="handleClick">更新数据</button>
+        <h1>{{message + '这是outer HTML中的'}}</h1>
+        <button @click="handleClick">outer html更新数据</button>
     </div>
 </body>
 <script>
     var vm = new Vue({
-        // el: '#app',
+        el: '#app',
+        template: "<div><h1>{{message + '这是再template中的'}}</h1><button @click='handleClick'>template更新数据</button></div>",
+        render: function(createElement) {
+            return createElement('h1', 'this is render createElemnt');
+        },
         data: {
             message: 'Vue的生命周期'
         },
@@ -81,7 +85,6 @@
             }
         }
     })
-    vm.$mount('#app');
 </script>
 
 </html>
