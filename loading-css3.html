@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>loading css3</title>
+    <style>
+        html, body, div, span, a{margin: 0;padding: 0;}
+        body{background: #3e007f;}
+        .loading{position: fixed; width: 100%; height: 100%; background: #fff;}
+        .pic{position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; width: 60px; height: 50px;font-size: 0;}
+        .pic .child{display: inline-block; margin: 0 2px; width: 8px; height: 50px; transform: scaleY(0.4); animation: loading 1s infinite; background: #e5e5e5;}
+        /* .pic .child:nth-child(1) {} */
+        .pic .child:nth-child(2) {animation-delay: 0.1s;}
+        .pic .child:nth-child(3) {animation-delay: 0.2s;}
+        .pic .child:nth-child(4) {animation-delay: 0.3s;}
+        .pic .child:nth-child(5) {animation-delay: 0.4s;}
+        @keyframes loading{
+            0%, 40%, 100%{transform: scaleY(0.4)}
+            20%{transform: scaleY(1)}
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="pic">
+            <span class="child"></span>
+            <span class="child"></span>
+            <span class="child"></span>
+            <span class="child"></span>
+            <span class="child"></span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.onreadystatechange = function() {
+            if (document.readyState === 'complete') {
+                document.getElementsByClassName('loading')[0].style = 'display: none;'
+            }
+        }
+    </script>
+</body>
+</html>
