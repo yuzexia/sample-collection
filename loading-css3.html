@@ -34,7 +34,9 @@
     </div>
 
     <script type="text/javascript">
-        document.onreadystatechange = function() {
+        document.onreadystatechange = function(e) {
+            console.log('onreadystatechange', e)
+            console.log('onreadystatechange', document)
             if (document.readyState === 'complete') {
                 document.getElementsByClassName('loading')[0].style = 'display: none;'
             }

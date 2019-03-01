@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>background扩展属性element</title>
 	<style>
-		.box{
-			width:400px;
-			height:100px;
-			background:element(#buttonCon) no-repeat;;
-			background:-webkit-element(#buttonCon) no-repeat;;
-			background:-moz-element(#buttonCon) no-repeat;;
+		.box {
+			width: 400px;
+			height: 100px;
+			background: element(#buttonCon) no-repeat;
+			background: -webkit-element(#buttonCon) no-repeat;
+			background: -moz-element(#buttonCon) no-repeat;
 		}
-		#buttonCon{
+
+		#buttonCon {
 			width: 100px;
 			height: 40px;
 			background: red;
@@ -21,11 +23,13 @@
 		}
 	</style>
 </head>
+
 <body>
-	
+
 	<div class="container">
 		<div class="box"></div>
 		<button id="buttonCon">我是按钮</button>
 	</div>
 </body>
+
 </html>
