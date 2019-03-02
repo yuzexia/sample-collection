@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>stop propagation</title>
+</head>
+<body>
+    <div id="box">
+        <button id="btn1">点击1</button>
+    </div>
+    <div id="box2">
+        <button id="btn2">点击2</button>
+    </div>
+    <div id="box3">
+        <button id="btn3">点击3</button>
+    </div>
+    <div id="box4">
+        <button id="btn4">点击4</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var boxEle = document.getElementById('box'),
+                boxEle2 = document.getElementById('box2'),
+                boxEle3 = document.getElementById('box3'),
+                boxEle4 = document.getElementById('box4'),
+                btn1 = document.getElementById('btn1'),
+                btn2 = document.getElementById('btn2'),
+                btn3 = document.getElementById('btn3'),
+                btn4 = document.getElementById('btn4');
+
+            boxEle.addEventListener('click', function() {
+                console.log('%c我是box1元素，我执行的是事件冒泡', 'background: #FF69B4;font-size:16px;')
+            }, false);
+            // false表示执行事件冒泡，true表示执行事件捕获
+            // 事件执行顺序是，1，事件捕获阶段（从最不具体目标到最具体目标） 2，到达目标事件 3，事件冒泡阶段（从最具体目标到最不具体目标）
+            btn1.addEventListener('click', function() {
+                console.log('%c我是btn1元素，我执行的是事件冒泡',  'background: #FF69B4;font-size:16px;')
+            }, false);
+
+            // 执行事件捕获
+            boxEle2.addEventListener('click', function() {
+                console.log('%c我是box2元素,我执行的是事件捕获', 'background: #EE5C42;font-size:16px;')
+            }, true);
+            btn2.addEventListener('click', function() {
+                console.log('%c我是btn2元素,我执行的是事件捕获', 'background: #EE5C42;font-size:16px;')
+            }, true)
+
+
+            // 阻止事件冒泡 stopPropagation, 
+            // stopImmediatePropagation 会阻止绑定的其他事件
+            boxEle3.addEventListener('click', function() {
+                console.log('%c我是box3元素，我执行的是事件冒泡', 'background: #CD96CD;font-size:16px;')
+            }, false);
+            btn3.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('%c我是btn3元素，我执行的是事件冒泡',  'background: #CD96CD;font-size:16px;')
+            }, false);
+            btn3.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('%c我是btn3元素的另一个事件，我执行的是事件冒泡',  'background: #CD96CD;font-size:16px;')
+            })
+
+            // stopImmediatePropagation 会阻止绑定的其他事件
+            boxEle4.addEventListener('click', function() {
+                console.log('%c我是box4元素，我执行的是事件冒泡', 'background: #C7C7C7;font-size:16px;')
+            }, false);
+            btn4.addEventListener('click', function(e) {
+                e.stopImmediatePropagation();
+                console.log('%c我是btn4元素，我执行的是事件冒泡',  'background: #C7C7C7;font-size:16px;')
+            }, false);
+            btn4.addEventListener('click', function(e) {
+                e.stopImmediatePropagation();
+                console.log('%c我是btn4元素的另一个事件，我执行的是事件冒泡',  'background: #C7C7C7;font-size:16px;')
+            })
+        }
+    </script>
+</body>
+</html>
