@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯布局</title>
+    <style>
+        html,body,div{margin: 0; padding: 0;}
+        h3{text-align: center;}
+        /* float布局 */
+        .box1{margin: 0 auto;width: 1000px;height: 200px;}
+        .box1 .left{float:left;width: 300px;height: 200px; background: #FFE4B5;}
+        .box1 .right{float: right; width: 300px;height: 200px; background: #FFA07A;}
+        .box1 .center{background:fuchsia;}
+
+        /* absolute布局 */
+        .box2{position:relative; margin: 50px auto;width: 1000px; height: 200px;}
+        .box2 .left{position:absolute; left: 0; width: 200px;height: 200px; background: #FFE4B5;}
+        .box2 .right{position:absolute; right: 0; width: 200px;height: 200px; background: #FFA07A;}
+        .box2 .center{position:absolute;left: 200px; right: 200px; background:fuchsia;}
+
+        /* flex布局 */
+        .box3{display:flex;width: 1000px; height: 200px;margin: 50px auto;}
+        .box3 .left{width: 200px; background: #FFE4B5;}
+        .box3 .right{width: 200px; background: #FFA07A;}
+        .box3 .center{flex: 1;background:fuchsia;}
+
+        /* table布局 */
+        .box4{display:table;width: 1000px; height: 200px;margin: 50px auto;}
+        .box4 .left{display: table-cell;width: 200px; background: #FFE4B5;}
+        .box4 .right{display: table-cell;width: 200px; background: #FFA07A;}
+        .box4 .center{display: table-cell; background:fuchsia;}
+
+        /* grid布局 */
+        .box5{display:grid;width: 1000px; height: 200px;grid-template-rows:200px;grid-template-columns:200px auto 200px; margin: 50px auto;}
+        .box5 .left{background: #FFE4B5;}
+        .box5 .right{background: #FFA07A;}
+        .box5 .center{background:fuchsia;}
+    </style>
+</head>
+<body>
+    <H3>float布局</H3>
+    <div class="box1">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+            dsafdsadfsfdsfd
+            dsafdsadfsfdsfd
+            dsafdsadfsfdsfd
+            dsafdsadfsfdsfd
+        </div>
+    </div>
+    <H3>absolute布局</H3>
+    <div class="box2">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+            dsafdsadfsfdsfd
+            dsafdsadfsfdsfd
+            dsafdsadfsfdsfd
+            dsafdsadfsfdsfd
+        </div>
+    </div>
+    <H3>flex布局</H3>
+    <div class="box3">
+        <div class="left"></div>
+        <div class="center"> dsafdsadfsfdsfd dsafdsadfsfdsfd dsafdsadfsfdsfd dsafdsadfsfdsfd </div>
+        <div class="right"></div>
+    </div>
+    <H3>table布局</H3>
+    <div class="box4">
+        <div class="left"></div>
+        <div class="center"> dsafdsadfsfdsfd dsafdsadfsfdsfd dsafdsadfsfdsfd dsafdsadfsfdsfd </div>
+        <div class="right"></div>
+    </div>
+    <H3>grid布局</H3>
+    <div class="box5">
+        <div class="left"></div>
+        <div class="center"> dsafdsadfsfdsfd dsafdsadfsfdsfd dsafdsadfsfdsfd dsafdsadfsfdsfd </div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
