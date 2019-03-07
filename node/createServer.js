@@ -1,25 +1,40 @@
-const http = require('http');
 
-const serverHandler = (request, response) => {
-    let responseData = '404';
-    let url = request.url;
-    let method = request.method;
-
-    if(url === '/') {
-        if ( method === 'GET') {
-            responseData = 'hello world';
-        } else if(method === 'POST') {
-            responseData = 'hello world with post';
-        }
-    } else if(url === '/detail') {
-        responseData = "detail page"
+class App {
+    constructor() {
+        this.handlers = {};
+        this.get = this.route.bind(this, 'GET')
+        this.post = this.route.bind(this, 'POST')
     }
-    
 
-    response.end(responseData);
+    route(method, path, handler) {
+        let pathInfo = (this.handlers[path] = this.handlers[path] || {})
+
+        pathInfo[method] = handler
+    }
+    callback() {
+        return (request, response) => {
+            let {url: path, method} = request
+            this.handlers[path] && this.handlers[path][method]
+                ? this.handlers[path][method](request, response)
+                : response.end('404');
+        }
+    }
 }
 
-http.createServer(serverHandler).listen(8888, () => {
-    console.log('server run as http://127.0.0.1:8888')
+const http = require('http');
+const app = new App();
+
+app.get('/', function(request, response) {
+    response.end('hello world')
 })
+app.post('/', function(request, response) {
+    response.end('hello world with post')
+})
+app.get('/detail', function(request, response) {
+    response.end('hello detail pageccc')
+})
+
+http.createServer(app.callback())
+.listen(888, () => console.log('server run as http://127.0.0.1:888'))
+
 
