@@ -6,17 +6,29 @@ class App {
         this.post = this.route.bind(this, 'POST')
     }
 
-    route(method, path, handler) {
+    route(method, path, ...handler) {
+        console.log('path::::', path)
         let pathInfo = (this.handlers[path] = this.handlers[path] || {})
+        console.log('pathInfo:::', pathInfo)
 
         pathInfo[method] = handler
     }
     callback() {
         return (request, response) => {
-            let {url: path, method} = request
-            this.handlers[path] && this.handlers[path][method]
-                ? this.handlers[path][method](request, response)
-                : response.end('404');
+            let {url: path, method} = request;
+            let handlers = this.handlers[path] && this.handlers[path][method];
+
+            if(handlers) {
+                let context = {}
+                function next(handlers, index= 0) {
+                    handlers[index] && handlers[index].call(context, request, response, () => {
+                        next(handlers, index + 1)
+                    })
+                }
+                next(handlers)
+            } else {
+                response.end('404');
+            }
         }
     }
 }
@@ -24,8 +36,13 @@ class App {
 const http = require('http');
 const app = new App();
 
-app.get('/', function(request, response) {
-    response.end('hello world')
+function generatorId(request, response, next) {
+    this.id = 123
+    next()
+  }
+
+app.get('/', generatorId, function(request, response) {
+    response.end(`hello world ${this.id}`)
 })
 app.post('/', function(request, response) {
     response.end('hello world with post')

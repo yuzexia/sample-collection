@@ -6,8 +6,8 @@
   "author": "yuze.xia <327932801@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev" : "node_modules/.bin/webpack-dev-server",
-    "dist" : "node_modules/.bin/webpack"
+    "dev": "node_modules/.bin/webpack-dev-server",
+    "dist": "node_modules/.bin/webpack"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
     "react": "16.2.0",
     "react-dom": "16.2.0"
   }
