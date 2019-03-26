@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$nextTick</title>
+    <script src="../libs/vue/vue@2.6.7.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="div" v-if="showDiv">hello world</div>
+        <button @click="getText">get div text</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                showDiv: false
+            },
+            methods: {
+                getText: function() {
+                    this.showDiv = true;
+                    var text = document.getElementById('div').innnerHTML; // 因vue的异步更新DOM的原理，在执行this.showDiv=true时，div还没有创建出来，知道下一个vue事件循环式，才开始创建。
+                    console.log(text);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
