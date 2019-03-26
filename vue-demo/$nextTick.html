@@ -11,19 +11,30 @@
     <div id="app">
         <div id="div" v-if="showDiv">hello world</div>
         <button @click="getText">get div text</button>
+        <div id="div2" v-if="showDiv2">hello $nextTick</div>
+        <button @click="getText2">get div text</button>
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                showDiv: false
+                showDiv: false,
+                showDiv2: false
             },
             methods: {
                 getText: function() {
                     this.showDiv = true;
-                    var text = document.getElementById('div').innnerHTML; // 因vue的异步更新DOM的原理，在执行this.showDiv=true时，div还没有创建出来，知道下一个vue事件循环式，才开始创建。
+                    var text = document.getElementById('div').innerHTML; // 因vue的异步更新DOM的原理，在执行this.showDiv=true时，div还没有创建出来，知道下一个vue事件循环式，才开始创建。
                     console.log(text);
+                },
+                getText2: function() {
+                    this.showDiv2 = true;
+                    console.log('this.els', this.$el)
+                    this.$nextTick(function() {
+                        var text = document.getElementById('div2').innerHTML; // $nextTick就是用来知道什么时候DOM更新的。
+                        console.log(text);
+                    })
                 }
             }
         })
