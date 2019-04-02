@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>createDocumentFragment</title>
+</head>
+<body>
+    
+
+    <script>
+        function createElement(num) {
+            var start = new Date().getTime();
+            for (let index = 0; index < num; index++) {
+                var el = document.createElement("span");
+                var elText = document.createTextNode(index);
+                el.appendChild(elText);
+                document.body.appendChild(el);
+            }
+            var end = new Date().getTime();
+            console.log(end - start)
+        }
+
+        function boxCreateElement(num) {
+            var start = new Date().getTime();
+            var box = document.createElement('div');
+            for (let index = 0; index < num; index++) {
+                var el = document.createElement('span');
+                var elText = document.createTextNode(index);
+                el.appendChild(elText);
+                box.appendChild(el);
+            }
+            document.body.appendChild(box);
+            var end = new Date().getTime();
+            console.log(end - start)
+        }
+
+        function createDocumentFragment(num) {
+            var start = new Date().getTime();
+            var box = document.createDocumentFragment();
+            for (let index = 0; index < num; index++) {
+                var el = document.createElement('span');
+                var elText = document.createTextNode(index);
+                el.appendChild(elText);
+                box.appendChild(el);
+            }
+            document.body.appendChild(box);
+            var end = new Date().getTime();
+            console.log(end - start)
+        }
+
+        createElement(10000);
+        boxCreateElement(10000);
+        createDocumentFragment(10000);
+    </script>
+</body>
+</html>
