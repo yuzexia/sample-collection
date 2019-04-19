@@ -23,15 +23,19 @@ var hero;
 //INIT THREE JS, SCREEN AND MOUSE EVENTS
 
 function initScreenAnd3D() {
-  
-  HEIGHT = window.innerHeight;
-  WIDTH = window.innerWidth;
+  container = document.getElementById('world');
+  // HEIGHT = window.innerHeight;
+  HEIGHT = container.offsetHeight;
+	// WIDTH = window.innerWidth;
+	WIDTH = container.offsetWidth;
   windowHalfX = WIDTH / 2;
   windowHalfY = HEIGHT / 2;
 
   scene = new THREE.Scene();
-  aspectRatio = WIDTH / HEIGHT;
-  fieldOfView = 50;
+	aspectRatio = WIDTH / HEIGHT;
+	console.log(aspectRatio)
+  // fieldOfView = 50;
+  fieldOfView = 40;
   nearPlane = 1;
   farPlane = 2000;
   camera = new THREE.PerspectiveCamera(
@@ -44,13 +48,17 @@ function initScreenAnd3D() {
   camera.position.z = 300;
   camera.position.y = 250;
   camera.lookAt(new THREE.Vector3(0, 60, 0));
-
+	// let canvas = document.createElement('canvas');
+	// canvas.style.width = 400 + 'px';
+	// canvas.style.height = 400 + 'px';
   renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	console.log(WIDTH, HEIGHT);
   renderer.setSize(WIDTH, HEIGHT);
   renderer.shadowMapEnabled = true;
   
-  container = document.getElementById('world');
+	// container = document.getElementById('world');
+	console.log(renderer.domElement);
   container.appendChild(renderer.domElement);
   
   window.addEventListener('resize', handleWindowResize, false);
@@ -157,7 +165,7 @@ Ball = function(){
 
 	// string
 	var stringGeom = new THREE.Geometry();
-
+	console.log('woolSegLength', woolSegLength)
 	for (var i=0; i< woolNodes; i++	){
 		var v = new THREE.Vector3(0, -i*woolSegLength, 0);
 		stringGeom.vertices.push(v);
@@ -173,6 +181,7 @@ Ball = function(){
 		this.verts.push(woolV);
 		
 	}
+	console.log(stringGeom, stringMat);
   	this.string = new THREE.Line(stringGeom, stringMat);
 
   	// body
@@ -231,7 +240,7 @@ Ball = function(){
   	this.body.add(this.wire8);
   	this.body.add(this.wire9);
 
-  	this.threeGroup.add(this.string);
+  	// this.threeGroup.add(this.string);
 	this.threeGroup.add(this.body);
 
 	this.threeGroup.traverse( function ( object ) {
