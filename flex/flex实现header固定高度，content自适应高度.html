@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex实现header固定高度，content自适应高度</title> 
+    <style>
+        html,body,div{margin:0;padding: 0}
+        body{
+            position: absolute;
+            display: flex;
+            height: 100%;
+            width: 100%;
+            background: #f99;
+            flex-direction: column;
+        }
+        .header{
+            width: 100%;
+            height: 100px;
+            background: yellow;
+        }
+        .content{
+            flex:1;
+            background:purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="content"></div>
+</body>
+</html>
